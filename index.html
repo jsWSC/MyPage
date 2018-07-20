@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#time{
+			width: 500px;
+			height: 500px;
+			font:100px/200px simhei;
+			text-align: center;
+			margin: 0 auto;
+			background-color: #23F430;
+			border-radius: 0%;
+			transition: 0.5s;
+		}
+	</style>
+
+	<script>
+		window.onload = function(){
+			var time = document.querySelector('#time');
+			var value = 100;
+			var count = 0;
+			var timer = setInterval(function(){
+				
+				// time.innerHTML = value;
+				var bR ;
+				if(value>50) bR = 100-value;
+				else bR = value;
+				//字符串拼接实现变换
+				time.style.borderRadius = 
+					bR + '%';
+				value -=1;
+				//循环变换
+				if(value<0){
+					count ++;
+					value = 100;
+					// clearInterval(timer);
+				}
+				//变换次数
+				if(count == 5){
+					clearInterval(timer);
+				}
+			},100);
+
+		}
+	</script>
+
+</head>
+<body>
+	<div id="time"></div>
+</body>
+</html>
