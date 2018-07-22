@@ -4,54 +4,133 @@
 	<meta charset="UTF-8">
 	<title>JS主页</title>
 	<style>
-		body{
-				background:#2d2d2d;
-				margin:0px;
-			}
-		#time{
-			width: 500px;
-			height: 500px;
-			font:36px/500px simhei;
-			text-align: center;
-			margin: 0 auto;
-			background-color: #23F430;
-			border-radius: 0%;
-			transition: 0.5s;
-		}
+		*{
+	margin:0px;
+	padding: 0px;
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+#banner{
+	background: #2d2d2d;
+	width: 100%;
+	height: 70px;
+	position: fixed;
+	box-shadow: 8px 10px 20px #ccc;
+}
+
+.time{
+	width: 60px;
+	height: 60px;
+	top:5px;
+	font:60px/60px simhei;
+	text-align: center;
+	margin: 0 auto;
+	background-color: #C4E92A;
+	border-radius: 0%;
+	transition: 0.5s;
+	position: absolute;
+}
+#time_l{
+	left: 1%;
+}
+#time_r{
+	right: 1%;
+}
+.time a{
+	text-decoration: none;
+	color: #000;
+}
+
+#navigation{
+	width: 400px;
+	height: 30px;
+	background:transparent;
+	border:1px solid #ffffff;
+	color: #FFFFFF;
+	top:18px;
+	right:200px;
+	position: absolute;
+}
+#button{
+	background-color: #ffffff;
+	width: 100px;
+	height: 30px;
+	color: #2d2d2d;
+	font:20px/30px simhei;
+	text-align: center;
+	top: 18px;
+	right: 100px;
+	border: 1px solid #ccc;
+	position: absolute;
+}
+#welcome{
+	width: 600px;
+	height: 60px;
+	display: block;
+	left: 6%;
+	/*margin: 0 auto;*/
+	font:30px/60px Arial;
+	color: #ffffff;
+	text-align: center;
+	position: absolute;
+}
+
+#wrap{
+	border:1px solid #ccc;
+	width: 1200px;
+	height: 1500px;
+	margin: 0 auto;
+}
 	</style>
 
 	<script>
 		window.onload = function(){
-			var time = document.querySelector('#time');
-			var value = 100;
-			var count = 0;
-			var timer = setInterval(function(){
-				
-				// time.innerHTML = value;
-				var bR ;
-				if(value>50) bR = 100-value;
-				else bR = value;
-				//字符串拼接实现变换
-				time.style.borderRadius = 
-					bR + '%';
-				value -=1;
-				//循环变换
-				if(value<0){
-					count ++;
-					value = 100;
-					// clearInterval(timer);
-				}
-				//变换次数
-				if(count == 5){
-					clearInterval(timer);
-				}
-			},100);
+		var time_l = document.getElementById("time_l");
+		var time_r = document.getElementById("time_r");
+		// var time = document.querySelector('#time');
+		var value = 100;
+		var count = 0;
+		var timer = setInterval(function(){
+			
+			// time.innerHTML = value;
+			var bR ;
+			if(value>50) bR = 100-value;
+			else bR = value;
+			//字符串拼接实现变换
+			time_l.style.borderRadius = 
+				bR + '%';
+			time_r.style.borderRadius = 
+				bR + '%';
+			value -=1;
+			//循环变换
+			if(value<0){
+				count ++;
+				value = 100;
+				// clearInterval(timer);
+			}
+			//变换次数
+			// if(count == 5){
+			// 	clearInterval(timer);
+			// }
+		},100);
 
-		}
+	}
 	</script>
 
 </head>
 <body>
-	<div id="time">~~欢迎访问JS主页~~</div>
+	<div id="banner">
+		<div class="time" id="time_l"><a href="#">J</a></div>
+		<div class="time" id="time_r"><a href="#">S</a></div>
+		<input type="text" id="navigation" placeholder="  或许你想了解些什么？这里有你想知道的！" />
+		<a href="http://www.baidu.com" target="_blank" id="button">Search>></a>
+		<a href="#" id="welcome">~~Welcome to JS'homepage！~~</a>
+		<audio src="mp3/Romantic.mp3" autoplay="autoplay" loop="loop"></audio>
+	</div>
+	<div id="wrap">
+		
+	</div>
 </body>
 </html>
