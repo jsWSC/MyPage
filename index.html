@@ -2,28 +2,62 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>JS主页</title>
-	<link rel="stylesheet" href="CSS/style_MyPage.css">
-	<link rel="icon" href="images/logo.png" type="image/x-icon"/>
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style_MyPage.css">
+	<link rel="icon" href="img/logo.png" type="image/x-icon"/>
 </head>
 <body>
 	<div id="banner">
 		<div class="time" id="time_l"><a href="#">J</a></div>
 		<div class="time" id="time_r"><a href="#">S</a></div>
-		<img src="images/search.png" alt="" id="search">
+		<img src="img/search.png" alt="" id="search">
 		<input type="text" id="navigation" placeholder="  或许你想了解些什么？这里有你想知道的！" />
 		<a href="http://www.baidu.com" target="_blank" id="button">Search>></a>
 		<a href="#" id="welcome">~~Welcome to JS'homepage！~~</a>
-		<audio src="MP3/Romantic.mp3" autoplay="autoplay" loop="loop"></audio>
+		<audio src="mp3/Romantic.mp3" autoplay="autoplay" loop="loop"></audio>
 	</div>
 	<div id="wrap">
 		<div id="blank"></div>
+		<div id="nav">
+			<ul id="nav_ul">
+				<li>
+					<a href="#">About me~</a>
+				</li>
+				<li class="nav_li">
+					<a href="#">WHAT&nbsp;&nbsp;&nbsp;&nbsp;></a>
+				</li>
+				<li class="nav_li">
+					<a href="#">WHERE&nbsp;&nbsp;></a>
+				</li>
+				<li class="nav_li">
+					<a href="#">WHY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a>
+				</li>
+				<li class="nav_li">
+					<a href="#">WHEN&nbsp;&nbsp;&nbsp;&nbsp;></li></a>
+				<li class="nav_li">
+					<a href="#">HOW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a>
+				</li>
+				<li class="nav_li">
+					<a href="#">WHO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></a>	
+				</li>
+				<li class="nav_li">
+					<a href="#">WHETHER&nbsp;></a>
+				</li>
+			</ul>
+			<div id="float">
+				
+			</div>
+		</div>
+		<div id="content">
+
+		</div>
 	</div>
 	
 </body>
 
 <script>
 	window.onload = function(){
+		var banner = document.getElementById("banner")
 		var time_l = document.getElementById("time_l");
 		var time_r = document.getElementById("time_r");
 		// var time = document.querySelector('#time');
@@ -52,6 +86,41 @@
 			// 	clearInterval(timer);
 			// }
 		},100);
+
+
+		var scrollFunc = function (e) {
+	        var direct = 0;
+	        e = e || window.event;
+	        if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件             
+	            if (e.wheelDelta > 0) { //当滑轮向上滚动时
+	                //alert("滑轮向上滚动");
+	                banner.style.boxShadow = "0px 0px 0px #ccc";
+	            }
+	            if (e.wheelDelta < 100) { //当滑轮向下滚动时
+	                //alert("滑轮向下滚动");
+	                banner.style.boxShadow = "8px 10px 20px #ccc";
+	            }
+	        } 
+	        else if (e.detail) {  //Firefox滑轮事件
+	            if (e.detail> 0) { //当滑轮向上滚动时
+	                //alert("滑轮向上滚动");
+	                banner.style.boxShadow = "0px 0px 0px #ccc";
+	            }
+	            if (e.detail< 0) { //当滑轮向下滚动时
+	                //alert("滑轮向下滚动");
+	                banner.style.boxShadow = "8px 10px 20px #ccc";
+	            }
+	        }
+	        //ScrollText(direct);
+    	}
+	    //给页面绑定滑轮滚动事件
+	    if (document.addEventListener) {
+	        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+	    }
+	    //滚动滑轮触发scrollFunc方法
+	    window.onmousewheel = document.onmousewheel = scrollFunc; 
+
+	    
 
 	}
 </script>
